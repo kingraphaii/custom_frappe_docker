@@ -1,10 +1,10 @@
-LETSENCRYPT_EMAIL=email@example.com
+LETSENCRYPT_EMAIL=admin@yate.co.zw
 ERPNEXT_VERSION=latest
 FRAPPE_VERSION=latest
 MARIADB_HOST=mariadb
 MYSQL_ROOT_PASSWORD=admin
-SITE_NAME=mysite.localhost
-SITES=`mysite.localhost`
+SITE_NAME=v3.isppme.com
+SITES=`v3.isppme.com`
 DB_ROOT_USER=root
 ADMIN_PASSWORD=admin
 INSTALL_APPS=erpnext,isppme
