@@ -7,5 +7,5 @@ SITE_NAME=mysite.localhost
 SITES=`mysite.localhost`
 DB_ROOT_USER=root
 ADMIN_PASSWORD=admin
-INSTALL_APPS=erpnext,posawesome,frappe_s3_attachment,metabase_integration,bookings,bench_manager
+INSTALL_APPS=erpnext,isppme
 ENTRYPOINT_LABEL=traefik.http.routers.excel-erpnext-nginx.entrypoints=web
