@@ -166,3 +166,4 @@ volumes:
   assets-vol:
   sites-vol:
   cert-vol:
+  logs-vol:
