@@ -16,6 +16,12 @@ services:
     labels:
       # enable traefik
       - "traefik.enable=true"
+      # global redirect to https for production only
+      - "${HTTPS_REDIRECT_RULE_LABEL}"
+      - "${HTTPS_REDIRECT_ENTRYPOINT_LABEL}"
+      - "${HTTPS_REDIRECT_MIDDLEWARE_LABEL}"
+      # middleware redirect for production only
+      - "${HTTPS_USE_REDIRECT_MIDDLEWARE_LABEL}"
     ports:
       - "80:80"
       - "443:443"
@@ -31,10 +37,12 @@ services:
       - FRAPPE_PY_PORT=8000
       - FRAPPE_SOCKETIO=frappe-socketio
       - SOCKETIO_PORT=9000
+      - SKIP_NGINX_TEMPLATE_GENERATION=${SKIP_NGINX_TEMPLATE_GENERATION}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.custom-erpnext-nginx.rule=Host(${SITES})"
       - "${ENTRYPOINT_LABEL}"
+      - "${CERT_RESOLVER_LABEL}"
       - "traefik.http.services.custom-erpnext-nginx.loadbalancer.server.port=80"
     volumes:
       - sites-vol:/var/www/html/sites:rw
@@ -50,6 +58,7 @@ services:
       - REDIS_SOCKETIO=redis-socketio:6379
       - SOCKETIO_PORT=9000
       - AUTO_MIGRATE=1
+      - WORKER_CLASS=${WORKER_CLASS}
     volumes:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
       - assets-vol:/home/frappe/frappe-bench/sites/assets:rw
@@ -147,6 +156,7 @@ services:
       - INSTALL_APPS=${INSTALL_APPS}
     volumes:
       - sites-vol:/home/frappe/frappe-bench/sites:rw
+      - logs-vol:/home/frappe/frappe-bench/logs:rw
 
 volumes:
   mariadb-vol:
