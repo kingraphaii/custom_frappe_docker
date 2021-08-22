@@ -9,7 +9,7 @@ APP_BRANCH=${3}
 echo -e "frappe\n${APP_NAME}" > /home/frappe/frappe-bench/sites/apps.txt
 cd /home/frappe/frappe-bench/apps
 git clone --depth 1 ${APP_REPO} ${APP_NAME} ${BRANCH}
-cd /home/frappe/frappe-bench/apps/${APP_NAME} && yarn && yarn add node-sass
+cd /home/frappe/frappe-bench/apps/${APP_NAME} && yarn
 
 cd /home/frappe/frappe-bench/apps/frappe
 yarn production --skip_frappe --app ${APP_NAME}

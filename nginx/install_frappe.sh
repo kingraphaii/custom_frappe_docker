@@ -12,7 +12,7 @@ git clone --depth 1 https://github.com/frappe/frappe frappe ${FRAMEWORK_BRANCH}
 
 echo -e "frappe" > /home/frappe/frappe-bench/sites/apps.txt
 
-cd /home/frappe/frappe-bench/apps/frappe && yarn && yarn add node-sass
+cd /home/frappe/frappe-bench/apps/frappe && yarn
 yarn production
 
 echo "rsync -a --delete /var/www/html/assets/frappe /assets" > /rsync
